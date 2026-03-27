@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page 2</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #FFF9E3;
+      padding: 20px;
+      text-align: center;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    /* IMAGE GRID */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 10px;
+      border-radius: 15px;
+      width: 220px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    /* CARD HOVER */
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* IMAGE ZOOM */
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.2);
+    }
+
+    /* CAPTION */
+    .caption {
+      margin-top: 8px;
+      font-size: 0.95em;
+    }
+
+    /* VIDEO SECTION */
+    .video-section {
+      margin-top: 40px;
+    }
+
+    .video-card {
+      background: white;
+      padding: 10px;
+      border-radius: 15px;
+      width: 350px;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="page2.html">Page 2</a>
+  <a href="page3.html">Page 3</a>
+  <a href="page4.html">Page 4</a>
+  <a href="page5.html">Page 5</a>
+</nav>
+
+<h1>📍 Day 1 in Krabi</h1>
+
+<!-- 📸 PHOTO SECTION -->
+<h2>📸 Photos</h2>
+
+<div class="gallery">
+
+  <div class="card">
+    <img src="krabi1.jpg">
+    <div class="caption" contenteditable="true">Arrival in Krabi 🌴</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi2.jpg">
+    <div class="caption" contenteditable="true">Beach view 🌊</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi3.jpg">
+    <div class="caption" contenteditable="true">Island hopping 🚤</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi4.jpg">
+    <div class="caption" contenteditable="true">Local food 🍜</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi5.jpg">
+    <div class="caption" contenteditable="true">Sunset vibes 🌅</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi6.jpg">
+    <div class="caption" contenteditable="true">Nature walk 🌿</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi7.jpg">
+    <div class="caption" contenteditable="true">Night market ✨</div>
+  </div>
+
+  <div class="card">
+    <img src="krabi8.jpg">
+    <div class="caption" contenteditable="true">End of the day 💛</div>
+  </div>
+
+</div>
+
+<!-- 🎥 VIDEO SECTION -->
+<div class="video-section">
+  <h2>🎥 Videos</h2>
+
+  <div class="video-card">
+    <video controls>
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+    <div class="caption" contenteditable="true">Krabi highlights 🎬</div>
+  </div>
+
+</div>
+
+</body>
+</html>

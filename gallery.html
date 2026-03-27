@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #FFF9E3;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+
+    .upload-box {
+      margin-top: 20px;
+    }
+
+    input, button {
+      margin: 10px;
+      padding: 8px;
+    }
+
+    /* SLIDESHOW */
+    .slideshow {
+      margin-top: 30px;
+    }
+
+    .slideshow img {
+      width: 400px;
+      border-radius: 10px;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    .controls button {
+      margin: 10px;
+      padding: 10px 15px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="page2.html">Page 2</a>
+  <a href="page3.html">Page 3</a>
+  <a href="page4.html">Page 4</a>
+  <a href="page5.html">Page 5</a>
+</nav>
+
+<h1>📸 My Krabi Slideshow</h1>
+
+<!-- UPLOAD -->
+<div class="upload-box">
+  <input type="file" id="imageInput" accept="image/*">
+  <br>
+  <input type="text" id="captionInput" placeholder="Write a caption...">
+  <br>
+  <button onclick="addPhoto()">Add to Slideshow</button>
+</div>
+
+<!-- SLIDESHOW DISPLAY -->
+<div class="slideshow">
+  <img id="slideImage" src="" alt="">
+  <div class="caption" id="slideCaption"></div>
+
+  <div class="controls">
+    <button onclick="prevSlide()">⬅️ Previous</button>
+    <button onclick="nextSlide()">Next ➡️</button>
+  </div>
+</div>
+
+<script>
+  let images = JSON.parse(localStorage.getItem("images")) || [];
+  let captions = JSON.parse(localStorage.getItem("captions")) || [];
+  let currentIndex = 0;
+
+  function saveData() {
+    localStorage.setItem("images", JSON.stringify(images));
+    localStorage.setItem("captions", JSON.stringify(captions));
+  }
+
+  function addPhoto() {
+    let file = document.getElementById("imageInput").files[0];
+    let caption = document.getElementById("captionInput").value;
+
+    if (!file) {
+      alert("Please select an image!");
+      return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = function(e) {
+      images.push(e.target.result);
+      captions.push(caption);
+
+      saveData();
+      showSlide(images.length - 1);
+    };
+
+    reader.readAsDataURL(file);
+
+    document.getElementById("imageInput").value = "";
+    document.getElementById("captionInput").value = "";
+  }
+
+  function showSlide(index) {
+    if (images.length === 0) return;
+
+    currentIndex = index;
+    document.getElementById("slideImage").src = images[index];
+    document.getElementById("slideCaption").textContent = captions[index];
+  }
+
+  function nextSlide() {
+    if (images.length === 0) return;
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    if (images.length === 0) return;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+
+  // Load saved images when page opens
+  window.onload = function() {
+    if (images.length > 0) {
+      showSlide(0);
+    }
+  };
+</script>
+
+</body>
+</html>
